@@ -1,0 +1,59 @@
+<div class="row justify-content-center align-items-center">
+  <div class="row" class="header">
+    <span>Guess the number!!!</span>
+  </div>
+
+  <div class="w-100"></div>
+
+  <div class="col-3">
+    <mat-form-field apperance="fill">
+      <mat-label>Insert a number</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="4"
+        min="1"
+        max="1000"
+        type="number"
+        placeholder="Insert a Number"
+        (keyup)="checkRange(input.value)"
+        (keydown.enter)="hasErrors ? null : checkNumber(input.value)"
+        [disabled]="isInputDisabled"
+      />
+      <mat-hint align="start"
+        ><span
+          [ngClass]="{ 'error-text': hasErrors, 'display-text': !hasErrors }"
+          >Number must be between {{ lowerBound }} and {{ upperBound }}.
+          Attempts left {{ chances }}</span
+        >
+      </mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <h2 *ngIf="this.attempts.length > 0">Your attempts so far</h2>
+
+    <div class="row" *ngFor="let attempt of attempts">
+      <li>{{ attempt }}</li>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center align-items-center">
+  <h2 *ngIf="luckedOut" style="margin-top: 3rem;" class="badge badge-secondary">WINNER!!!!!!!!</h2>
+</div>
+
+<div
+  class="row justify-content-center align-items-center"
+  style="margin-top: 4rem"
+>
+  <h3 style="font-style: italic">Restart Game</h3>
+  <div class="w-100"></div>
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+    (click)="resetGame()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

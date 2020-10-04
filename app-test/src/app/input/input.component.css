@@ -1,0 +1,19 @@
+.error-text {
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.display-text {
+  color: black;
+  font-size: 0.8rem;
+}
+
+.header {
+  padding: 3rem;
+  font-weight: bolder;
+  background-color: #1976d2;
+  width: 100%;
+  text-align: center;
+  font-size: 5rem;
+}
